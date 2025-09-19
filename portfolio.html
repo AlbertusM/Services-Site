@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Web Development Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --dark-color: #1f2937;
+            --light-bg: #f8fafc;
+        }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .portfolio-section {
+        padding: 80px 0;
+    }
+
+    .portfolio-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        height: 100%;
+        overflow: hidden;
+        background: white;
+    }
+
+    .portfolio-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .portfolio-image {
+        position: relative;
+        overflow: hidden;
+        height: 250px;
+        background: linear-gradient(135deg, var(--light-bg), #e2e8f0);
+    }
+
+    .portfolio-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .portfolio-card:hover .portfolio-image::before {
+        opacity: 0.8;
+    }
+
+    .portfolio-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+    }
+
+    .portfolio-card:hover .portfolio-overlay {
+        opacity: 1;
+    }
+
+    .portfolio-content {
+        padding: 30px;
+    }
+
+    .portfolio-category {
+        display: inline-block;
+        background: var(--accent-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .tech-tag {
+        background: var(--light-bg);
+        color: var(--dark-color);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        border: 1px solid #e5e7eb;
+    }
+
+    .services-section {
+        background: var(--light-bg);
+        padding: 80px 0;
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 12px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .service-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .process-section {
+        padding: 80px 0;
+        background: var(--dark-color);
+        color: white;
+    }
+
+    .process-step {
+        text-align: center;
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .process-number {
+        width: 80px;
+        height: 80px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+        color: white;
+        padding: 80px 0;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: var(--accent-color);
+        margin: 20px auto;
+        border-radius: 2px;
+    }
+
+    .btn-custom {
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .btn-primary-custom {
+        background: var(--accent-color);
+        color: white;
+    }
+
+    .btn-primary-custom:hover {
+        background: #d97706;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-outline-custom {
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+    }
+
+    .btn-outline-custom:hover {
+        background: white;
+        color: var(--success-color);
+    }
+
+    .mockup-browser {
+        background: #f1f5f9;
+        border-radius: 8px 8px 0 0;
+        padding: 15px;
+        position: relative;
+    }
+
+    .browser-dots {
+        display: flex;
+        gap: 8px;
+    }
+
+    .browser-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .mockup-screen {
+        background: white;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--primary-color);
+        opacity: 0.3;
+    }
+
+    .filter-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-tab {
+        background: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 60px 0;
+        }
+
+        .filter-tabs {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center hero-content">
+                    <i class="fas fa-code fa-4x mb-4" style="opacity: 0.8;"></i>
+                    <h1 class="display-4 fw-bold mb-4">Professional Web Development</h1>
+                    <p class="lead mb-4">Creating beautiful, functional websites that drive results. From concept to launch, I build digital experiences that engage users and grow businesses.</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="#portfolio" class="btn btn-custom btn-primary-custom btn-lg">
+                            <i class="fas fa-eye me-2"></i>View Portfolio
+                        </a>
+                        <a href="#services" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-tools me-2"></i>My Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Portfolio Filter -->
+<section id="portfolio" class="portfolio-section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="display-5 fw-bold">My Portfolio</h2>
+            <p class="lead text-muted">Recent projects showcasing my web development expertise</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All Projects</button>
+            <button class="filter-tab" data-filter="business">Business</button>
+            <button class="filter-tab" data-filter="ecommerce">E-commerce</button>
+            <button class="filter-tab" data-filter="portfolio">Portfolio</button>
+            <button class="filter-tab" data-filter="landing">Landing Pages</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="row g-4" id="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="business">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="mockup-browser">
+                            <div class="browser-dots">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                            </div>
+                        </div>
+                        <div class="mockup-screen">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light btn-lg me-2">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-code"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Business Website</span>
+                        <h4 class="fw-bold mb-3">Corporate Solutions Ltd</h4>
+                        <p class="text-muted">Professional business website with modern design, responsive layout, and integrated contact forms. Built to showcase services and drive lead generation.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="ecommerce">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="mockup-browser">
+                            <div class="browser-dots">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                            </div>
+                        </div>
+                        <div class="mockup-screen">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light btn-lg me-2">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-code"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">E-commerce</span>
+                        <h4 class="fw-bold mb-3">Fashion Boutique Online</h4>
+                        <p class="text-muted">Full-featured e-commerce platform with product catalog, shopping cart, payment integration, and admin dashboard for inventory management.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="portfolio">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="mockup-browser">
+                            <div class="browser-dots">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                            </div>
+                        </div>
+                        <div class="mockup-screen">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light btn-lg me-2">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-code"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Portfolio</span>
+                        <h4 class="fw-bold mb-3">Creative Designer Portfolio</h4>
+                        <p class="text-muted">Stunning portfolio website for a graphic designer featuring interactive galleries, smooth animations, and mobile-optimized design.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">SCSS</span>
+                            <span class="tech-tag">GSAP</span>
+                            <span class="tech-tag">Netlify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="landing">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="mockup-browser">
+                            <div class="browser-dots">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                            </div>
+                        </div>
+                        <div class="mockup-screen">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light btn-lg me-2">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-code"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Landing Page</span>
+                        <h4 class="fw-bold mb-3">Tech Startup Launch</h4>
+                        <p class="text-muted">High-converting landing page for a tech startup with compelling copy, lead capture forms, and social proof integration.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Alpine.js</span>
+                            <span class="tech-tag">Mailchimp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="business">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="mockup-browser">
+                            <div class="browser-dots">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                            </div>
+                        </div>
+                        <div class="mockup-screen">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light btn-lg me-2">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-code"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Restaurant</span>
+                        <h4 class="fw-bold mb-3">Gourmet Restaurant</h4>
+                        <p class="text-muted">Elegant restaurant website with online menu, reservation system, and integration with delivery platforms for seamless customer experience.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">OpenTable</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="col-lg-4 col-md-6 portfolio-item" data-category="portfolio">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="mockup-browser">
+                            <div class="browser-dots">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                            </div>
+                        </div>
+                        <div class="mockup-screen">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light btn-lg me-2">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-code"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Photography</span>
+                        <h4 class="fw-bold mb-3">Photography Studio</h4>
+                        <p class="text-muted">Visually stunning photography portfolio with lightbox galleries, client booking system, and blog integration for sharing photography tips.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Prisma</span>
+                            <span class="tech-tag">Cloudinary</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="display-5 fw-bold">What I Offer</h2>
+            <p class="lead text-muted">Comprehensive web development services for your business</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Custom Web Design</h4>
+                    <p class="text-muted">Unique, responsive websites tailored to your brand and business goals. Every design is crafted from scratch to stand out from the competition.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">E-commerce Development</h4>
+                    <p class="text-muted">Full-featured online stores with secure payment processing, inventory management, and user-friendly shopping experiences that drive sales.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Responsive Design</h4>
+                    <p class="text-muted">Mobile-first approach ensuring your website looks and functions perfectly on all devices, from smartphones to desktop computers.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">SEO Optimization</h4>
+                    <p class="text-muted">Built-in SEO best practices to help your website rank higher in search engines and attract more organic traffic to your business.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Website Maintenance</h4>
+                    <p class="text-muted">Ongoing support, updates, and maintenance to keep your website secure, fast, and running smoothly with the latest features.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Performance Optimization</h4>
+                    <p class="text-muted">Speed optimization and performance tuning to ensure fast loading times, better user experience, and improved search rankings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="display-5 fw-bold">My Development Process</h2>
+            <p class="lead text-muted">A proven approach to deliver exceptional results</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h4 class="fw-bold mb-3">Discovery & Planning</h4>
+                    <p class="text-muted">Understanding your business goals, target audience, and project requirements to create a comprehensive development strategy.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h4 class="fw-bold mb-3">Design & Prototyping</h4>
+                    <p class="text-muted">Creating wireframes and mockups to visualize the user experience and ensure alignment with your vision before development begins.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h4 class="fw-bold mb-3">Development & Testing</h4>
+                    <p class="text-muted">Building your website with clean, efficient code and rigorous testing to ensure functionality across all devices and browsers.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h4 class="fw-bold mb-3">Launch & Support</h4>
+                    <p class="text-muted">Deploying your website and providing ongoing support, training, and maintenance to ensure continued success and growth.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="display-5 fw-bold mb-4">Ready to Start Your Project?</h2>
+                <p class="lead mb-4">Let's work together to create a website that not only looks amazing but also drives real results for your business. Get in touch today for a free consultation.</p>
+                <div class="d-grid d-md-flex justify-content-md-center gap-3">
+                    <button class="btn btn-custom btn-primary-custom btn-lg">
+                        <i class="fas fa-envelope me-2"></i>Get Free Quote
+                    </button>
+                    <button class="btn btn-outline-custom btn-lg">
+                        <i class="fas fa-phone me-2"></i>Schedule Call
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Portfolio Filter Functionality
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            filterTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            const filterValue = tab.getAttribute('data-filter');
+
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+    </script>
+    </body>
+    </html>
