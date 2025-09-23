@@ -6,3 +6,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         });
     });
+
+const btn = document.getElementById("goBtn");
+    btn.addEventListener("click", () => {
+      document.body.classList.add("slide-out");
+      setTimeout(() => {
+        window.location.href = "portfolio.html";
+      }, 600); // matches transition duration
+    });
