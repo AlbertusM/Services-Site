@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - TechSolutions Pro | Professional IT Support</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style2.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --dark-color: #1f2937;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+        }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 80px; /* Account for fixed navbar */
+    }
+
+    /* Sticky Navigation */
+    .navbar {
+        background: var(--white) !important;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        padding: 15px 0;
+        transition: all 0.3s ease;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    .navbar.scrolled {
+        padding: 10px 0;
+        box-shadow: 0 2px 30px rgba(0,0,0,0.15);
+    }
+
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        position: relative;
+    }
+
+    /* Home Icon - Left */
+    .home-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+    }
+
+    .home-icon:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        color: white;
+    }
+
+    /* Portfolio Link - Center */
+    .portfolio-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--accent-color);
+        padding: 12px 30px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .portfolio-center:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateX(-50%) translateY(-2px);
+        box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    /* Brand/Logo - Right side option */
+    .navbar-brand {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--primary-color) !important;
+        text-decoration: none;
+    }
+
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .portfolio-center {
+            position: static;
+            transform: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+
+        .navbar-container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .portfolio-center:hover {
+            transform: translateY(-2px);
+        }
+    }
+</style>
+
+</head>
+<body>
+     <!-- Sticky Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="navbar-container">
+                <!-- Home Icon - Left -->
+                <a href="index.html" class="home-icon">
+                    <i class="fas fa-home"></i>
+                </a>
+
+            <!-- Portfolio Link - Center -->
+            <a href="portfolio.html" class="portfolio-center">
+                <i class="fas fa-code me-2"></i>Portfolio
+            </a>
+
+            <!-- Optional Brand - Right -->
+            <a class="navbar-brand" href="about.html">
+                Albertus
+            </a>
+        </div>
+    </div>
+</nav>
+    <!-- Team Section -->
+<section class="team-section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="display-5 fw-bold">Meet the Founder</h2>
+            <p class="lead text-muted">The person behind TechSolutions Pro</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="founder-card">
+                    <div class="founder-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="fw-bold mb-3">Your Name</h3>
+                    <p class="text-primary fw-semibold mb-4">Founder & Lead Technician</p>
+                    <p class="mb-4">With over 5 years of experience in IT support and web development, I founded TechSolutions Pro to bridge the gap between complex technology and everyday business needs.</p>
+                    <p class="mb-4">My background spans everything from troubleshooting home computer issues to designing and developing professional websites for local businesses. I believe that technology should empower, not frustrate.</p>
+                    <p class="mb-4">When I'm not solving technical challenges, you'll find me staying current with the latest industry trends, contributing to local tech meetups, and helping East London businesses grow through better technology solutions.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-certificate fa-2x text-primary mb-2"></i>
+                            <div class="fw-bold">Certified Professional</div>
+                            <small class="text-muted">Industry Certified</small>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-code fa-2x text-success mb-2"></i>
+                            <div class="fw-bold">Full-Stack Developer</div>
+                            <small class="text-muted">Web & Mobile</small>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-map-marker-alt fa-2x text-warning mb-2"></i>
+                            <div class="fw-bold">Local Expert</div>
+                            <small class="text-muted">East London Based</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Hero Section -->
+     <!--
+    <section class="about-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center hero-content">
+                    <h1 class="display-4 fw-bold mb-4">About TechSolutions Pro</h1>
+                    <p class="lead mb-4">Your trusted technology partner in East London, delivering professional IT support and innovative web solutions since 2019.</p>
+                    <div class="d-flex justify-content-center gap-4 flex-wrap">
+                        <div class="text-center">
+                            <i class="fas fa-users fa-2x mb-2"></i>
+                            <div class="fw-bold">500+ Clients</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-tools fa-2x mb-2"></i>
+                            <div class="fw-bold">2000+ Issues Resolved</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-clock fa-2x mb-2"></i>
+                            <div class="fw-bold">5+ Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+<!-- Story Section -->
+<section class="story-section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="display-5 fw-bold">Our Story</h2>
+            <p class="lead text-muted">How we became East London's trusted IT support partner</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="story-card">
+                    <h3 class="fw-bold mb-4"><i class="fas fa-lightbulb text-warning me-3"></i>How It Started</h3>
+                    <p class="mb-4">TechSolutions Pro began with a simple observation: small businesses and home users in East London were struggling with technology issues that prevented them from focusing on what they do best.</p>
+                    <p>Founded in 2019, we started as a one-person operation with a mission to make technology accessible, reliable, and stress-free for everyone in our community.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="story-card">
+                    <h3 class="fw-bold mb-4"><i class="fas fa-rocket text-primary me-3"></i>Where We're Going</h3>
+                    <p class="mb-4">Today, we've expanded our services to include not just IT support, but also professional web development, helping businesses establish their digital presence and grow online.</p>
+                    <p>Our commitment remains the same: providing personalized, professional technology solutions that empower our clients to achieve their goals without technology getting in the way.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="display-5 fw-bold">Our Core Values</h2>
+            <p class="lead text-muted">The principles that guide everything we do</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Reliability</h4>
+                    <p class="text-muted">We show up when we say we will, deliver what we promise, and stand behind our work with genuine commitment to your success.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Personal Service</h4>
+                    <p class="text-muted">Every client gets direct access to experienced technicians who understand your unique needs and speak in plain English, not tech jargon.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Continuous Learning</h4>
+                    <p class="text-muted">Technology evolves rapidly, and so do we. We invest in ongoing training and certifications to bring you the latest solutions.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Security First</h4>
+                    <p class="text-muted">Your data and privacy are paramount. Every solution we implement prioritizes security without compromising usability.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Community Focus</h4>
+                    <p class="text-muted">As a local business, we're invested in the success of East London's business community and take pride in our local partnerships.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Fair Pricing</h4>
+                    <p class="text-muted">Transparent, competitive pricing with no hidden fees. You'll always know exactly what you're paying for and why.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Stats Section -->
+ <!--
+<section class="stats-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <span class="stat-number" data-count="500">0</span>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <span class="stat-number" data-count="2000">0</span>
+                    <div class="stat-label">Issues Resolved</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <span class="stat-number" data-count="50">0</span>
+                    <div class="stat-label">Websites Built</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-card">
+                    <span class="stat-number" data-count="5">0</span>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+<!-- Mission Section -->
+<section class="mission-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="mission-card text-center">
+                    <h2 class="display-5 fw-bold mb-4">Our Mission</h2>
+                    <p class="lead mb-4">To empower individuals and businesses in East London with reliable, professional technology solutions that remove barriers and enable growth.</p>
+                    <p class="fs-5">We believe that technology should be an enabler, not a roadblock. Whether you're a home user dealing with a slow computer or a business owner looking to establish an online presence, we're here to make technology work for you, not against you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="timeline-section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="display-5 fw-bold">Our Journey</h2>
+            <p class="lead text-muted">Key milestones in our growth</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2019</div>
+                    <h4 class="fw-bold">Foundation</h4>
+                    <p>TechSolutions Pro was founded with a vision to provide personal, reliable IT support to East London's growing business community.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020</div>
+                    <h4 class="fw-bold">Remote Support Launch</h4>
+                    <p>Expanded services to include comprehensive remote support capabilities, helping clients maintain productivity during challenging times.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2022</div>
+                    <h4 class="fw-bold">Web Development Services</h4>
+                    <p>Added professional web development to our service portfolio, helping local businesses establish and grow their online presence.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024</div>
+                    <h4 class="fw-bold">500 Clients Milestone</h4>
+                    <p>Reached 500+ satisfied clients and over 2000 successfully resolved technical issues, establishing ourselves as East London's trusted IT partner.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="js/script2.js">
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+
+<div class="container"> 
+        <footer class="py-3 my-4"> <ul class="nav justify-content-center border-bottom pb-3 mb-3">   </ul> <p class="text-center text-body-secondary">© 2025 Albertus Meiring</p> 
+        </footer> 
+    </div>
+
+</body>
+</html>
