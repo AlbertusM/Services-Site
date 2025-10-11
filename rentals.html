@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Rentals Coming Soon</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --dark-color: #1f2937;
+            --light-bg: #f8fafc;
+        }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        overflow-x: hidden;
+    }
+
+    /* Main Section */
+    .coming-soon-section {
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 60px 0;
+    }
+
+    .coming-soon-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Icon Animation */
+    .main-icon {
+        font-size: 8rem;
+        margin-bottom: 30px;
+        animation: float 3s ease-in-out infinite;
+        opacity: 0.9;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    /* Equipment Preview Cards */
+    .equipment-preview {
+        margin: 50px 0;
+    }
+
+    .preview-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 30px 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .preview-card:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-10px);
+    }
+
+    .preview-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 2rem;
+        color: white;
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Notify Form */
+    .notify-form {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 40px;
+        margin: 50px 0;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    .form-control:focus {
+        background: white;
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+        outline: none;
+    }
+
+    /* Buttons */
+    .btn-custom {
+        padding: 15px 40px;
+        border-radius: 25px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        border: none;
+        font-size: 1rem;
+    }
+
+    .btn-primary-custom {
+        background: var(--accent-color);
+        color: white;
+    }
+
+    .btn-primary-custom:hover {
+        background: #d97706;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-outline-custom {
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+    }
+
+    .btn-outline-custom:hover {
+        background: white;
+        color: var(--primary-color);
+    }
+
+    /* Features List */
+    .features-list {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 40px;
+        margin: 50px 0;
+    }
+
+    .feature-item {
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .feature-item:last-child {
+        border-bottom: none;
+    }
+
+    .feature-item i {
+        font-size: 1.5rem;
+        margin-right: 15px;
+        color: var(--accent-color);
+    }
+
+    /* Timeline Badge */
+    .timeline-badge {
+        display: inline-block;
+        background: var(--accent-color);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin: 20px 0;
+        box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Social Links */
+    .social-links {
+        margin-top: 40px;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+        font-size: 1.3rem;
+    }
+
+    .social-link:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Pulse Animation */
+    .pulse {
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    /* Back Button */
+    .back-btn {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .back-btn:hover {
+        background: var(--accent-color);
+        color: white;
+        transform: translateX(-5px);
+        box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    @media (max-width: 768px) {
+        .main-icon {
+            font-size: 5rem;
+        }
+
+        .notify-form {
+            padding: 30px 20px;
+        }
+
+        .back-btn {
+            top: 20px;
+            left: 20px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+<section class="coming-soon-section">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <!-- Main Icon -->
+                    <div class="main-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h1 class="display-3 fw-bold mb-4">Equipment Rentals</h1>
+                    <h2 class="display-6 mb-4">Coming Soon!</h2>
+                    <p class="lead mb-4">We're excited to announce our new equipment rental service launching soon. Rent professional-grade laptops, desktops, projectors, and DSLR cameras for your projects and events.</p>
+
+                    <!-- Timeline Badge -->
+                    <div class="timeline-badge pulse">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Launching 2026
+                    </div>
+
+                    <!-- Equipment Preview -->
+                    <div class="equipment-preview">
+                        <div class="row g-4">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="preview-card">
+                                    <div class="preview-icon">
+                                        <i class="fas fa-laptop"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Laptops</h5>
+                                    <p class="mb-0">From R150/day</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="preview-card">
+                                    <div class="preview-icon">
+                                        <i class="fas fa-desktop"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Desktops</h5>
+                                    <p class="mb-0">From R120/day</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="preview-card">
+                                    <div class="preview-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Projectors</h5>
+                                    <p class="mb-0">From R200/day</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="preview-card">
+                                    <div class="preview-icon">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">DSLR Cameras</h5>
+                                    <p class="mb-0">From R250/day</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Section -->
+                    <div class="row mt-5">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="features-list">
+                                <h3 class="fw-bold mb-4">What to Expect</h3>
+                                
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>Flexible Rental Periods:</strong> Daily, weekly, and monthly options with special discounts
+                                </div>
+
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>Latest Equipment:</strong> Professional-grade, well-maintained devices
+                                </div>
+
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>Technical Support:</strong> Free support included during your entire rental period
+                                </div>
+
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>Delivery Available:</strong> Pickup and delivery service within East London
+                                </div>
+
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>Business Packages:</strong> Custom SLA agreements for businesses with ongoing needs
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notify Me Form -->
+                    <div class="row mt-5">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="notify-form">
+                                <h3 class="fw-bold mb-3">
+                                    <i class="fas fa-bell me-2"></i>
+                                    Get Notified When We Launch
+                                </h3>
+                                <p class="mb-4">Be the first to know when our rental service goes live. We'll send you exclusive early-bird offers!</p>
+                                
+                                <form id="notifyForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Your Name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" placeholder="Your Email" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <select class="form-control">
+                                                <option value="">I'm interested in renting...</option>
+                                                <option value="laptop">Laptops</option>
+                                                <option value="desktop">Desktops</option>
+                                                <option value="projector">Projectors</option>
+                                                <option value="camera">DSLR Cameras</option>
+                                                <option value="multiple">Multiple Items</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-custom btn-primary-custom btn-lg w-100">
+                                                <i class="fas fa-paper-plane me-2"></i>Notify Me
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="mt-5">
+                        <h4 class="fw-bold mb-4">Need IT Support Now?</h4>
+                        <p class="lead mb-4">While you wait for our rental service, check out our professional IT support and web development services.</p>
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
+                            <a href="index.html" class="btn btn-custom btn-outline-custom btn-lg">
+                                <i class="fas fa-tools me-2"></i>IT Support Services
+                            </a>
+                            <a href="portfolio.html" class="btn btn-custom btn-outline-custom btn-lg">
+                                <i class="fas fa-code me-2"></i>Web Development
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <p class="mb-3">Follow us for updates:</p>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="mt-5 pt-4 border-top border-light">
+                        <p class="mb-2">Questions? Get in touch!</p>
+                        <p class="mb-0">
+                            <i class="fas fa-phone me-2"></i>+27 62 801 6264 &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <i class="fas fa-envelope me-2"></i>info@albertusm.co.za
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Form submission handler
+    document.getElementById('notifyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show success message
+        const form = e.target;
+        const formData = new FormData(form);
+        
+        // Create success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'alert alert-success mt-3';
+        successMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i>Thank you! We\'ll notify you when we launch.';
+        
+        // Replace form with success message
+        form.parentElement.innerHTML = '<div class="text-center"><i class="fas fa-check-circle text-success" style="font-size: 3rem; margin-bottom: 20px;"></i><h4>Thank You!</h4><p>We\'ll send you an email as soon as our rental service launches.</p></div>';
+    });
+</script>
+
+</body>
+</html>

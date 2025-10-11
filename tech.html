@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexaTech - Innovation Unleashed</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+    }
+    
+    .navbar {
+        background: rgba(15, 23, 42, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .nav-link {
+        color: #fff !important;
+        font-weight: 500;
+        transition: all 0.3s;
+        position: relative;
+    }
+    
+    .nav-link:hover {
+        color: var(--primary) !important;
+    }
+    
+    .hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent);
+        border-radius: 50%;
+        top: -250px;
+        right: -250px;
+        animation: pulse 4s ease-in-out infinite;
+    }
+    
+    .hero::after {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);
+        border-radius: 50%;
+        bottom: -200px;
+        left: -200px;
+        animation: pulse 5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero p {
+        font-size: 1.3rem;
+        color: #cbd5e1;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .btn-primary-custom {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border: none;
+        padding: 15px 40px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s;
+        animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    
+    .btn-primary-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+    }
+    
+    .btn-outline-custom {
+        border: 2px solid var(--primary);
+        color: #fff;
+        padding: 15px 40px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s;
+        animation: fadeInUp 1s ease-out 0.5s both;
+    }
+    
+    .btn-outline-custom:hover {
+        background: var(--primary);
+        color: #fff;
+        transform: translateY(-3px);
+    }
+    
+    .feature-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+        height: 100%;
+        border: 1px solid #e2e8f0;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    
+    .section-subtitle {
+        color: #64748b;
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .stats-section {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #fff;
+        padding: 80px 0;
+    }
+    
+    .stat-item h3 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+    }
+    
+    .testimonial-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #fff;
+        font-weight: 700;
+    }
+    
+    footer {
+        background: var(--dark);
+        color: #fff;
+        padding: 60px 0 20px;
+    }
+    
+    .footer-link {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    .footer-link:hover {
+        color: var(--primary);
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(99, 102, 241, 0.2);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 5px;
+        transition: all 0.3s;
+    }
+    
+    .social-icon:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-bolt"></i> NexaTech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+```
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1>Innovation Meets Excellence</h1>
+                <p>Transform your business with cutting-edge technology solutions designed for the future.</p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <button class="btn btn-primary-custom btn-lg">Get Started</button>
+                    <button class="btn btn-outline-custom btn-lg">Learn More</button>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=600&fit=crop" alt="Tech" class="img-fluid rounded" style="animation: fadeInUp 1s ease-out 0.6s both;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5" id="features" style="padding: 100px 0;">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">Powerful features to accelerate your growth</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Experience blazing-fast performance with our optimized infrastructure and cutting-edge technology stack.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Enterprise-grade security with 99.9% uptime guarantee. Your data is protected with advanced encryption.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Easy Integration</h3>
+                    <p>Seamlessly integrate with your existing tools and workflows. Get up and running in minutes.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Real-time insights and comprehensive analytics to make data-driven decisions for your business.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team Collaboration</h3>
+                    <p>Work together seamlessly with built-in collaboration tools and real-time synchronization.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated support team is always available to help you succeed with quick response times.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Active Users</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Countries</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <h3>99.9%</h3>
+                    <p>Uptime</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <h3>4.9/5</h3>
+                    <p>Rating</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5" id="testimonials" style="padding: 100px 0; background: #f8fafc;">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Trusted by thousands of businesses worldwide</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="testimonial-avatar">JD</div>
+                        <div class="ms-3">
+                            <h5 class="mb-0">John Doe</h5>
+                            <small class="text-muted">CEO, TechCorp</small>
+                        </div>
+                    </div>
+                    <p>"NexaTech transformed our workflow completely. The results exceeded our expectations!"</p>
+                    <div class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="testimonial-avatar">SJ</div>
+                        <div class="ms-3">
+                            <h5 class="mb-0">Sarah Johnson</h5>
+                            <small class="text-muted">CTO, InnovateLabs</small>
+                        </div>
+                    </div>
+                    <p>"Outstanding platform with incredible support. Highly recommend for any growing business."</p>
+                    <div class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="testimonial-avatar">MC</div>
+                        <div class="ms-3">
+                            <h5 class="mb-0">Michael Chen</h5>
+                            <small class="text-muted">Founder, StartupX</small>
+                        </div>
+                    </div>
+                    <p>"Game-changing solution! Our productivity increased by 300% within the first month."</p>
+                    <div class="text-warning">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5" id="contact" style="padding: 100px 0;">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have questions? We'd love to hear from you.</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form class="p-4" style="background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Your Name" style="padding: 15px; border-radius: 10px;">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" placeholder="Your Email" style="padding: 15px; border-radius: 10px;">
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control" placeholder="Subject" style="padding: 15px; border-radius: 10px;">
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" style="padding: 15px; border-radius: 10px;"></textarea>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary-custom btn-lg">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-3"><i class="fas fa-bolt"></i> NexaTech</h4>
+                <p class="text-muted">Building the future of technology, one innovation at a time.</p>
+                <div class="mt-3">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Company</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">About Us</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Careers</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Blog</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Press</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Resources</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">Documentation</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Tutorials</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Support</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">API</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Legal</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">Privacy</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Terms</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Security</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Cookies</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 mb-4">
+                <h5 class="mb-3">Contact</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="footer-link">Support</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Sales</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Partners</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Media</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 40px 0 20px;">
+        <div class="text-center text-muted">
+            <p>&copy; 2025 NexaTech. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+```
+
+</body>
+</html>

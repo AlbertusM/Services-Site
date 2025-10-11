@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen Photography</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+        }
+
+```
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        color: var(--text-dark) !important;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .nav-link:hover {
+        color: var(--accent-color) !important;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: var(--accent-color);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .hero-section {
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(44,62,80,0.8), rgba(52,73,94,0.8)), 
+                    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23f8f9fa" width="1920" height="1080"/><circle fill="%23dee2e6" cx="400" cy="300" r="100" opacity="0.3"/><circle fill="%23adb5bd" cx="1200" cy="200" r="80" opacity="0.2"/><circle fill="%23ced4da" cx="800" cy="600" r="120" opacity="0.25"/><rect fill="%23e9ecef" x="100" y="800" width="300" height="200" opacity="0.2"/><rect fill="%23f8f9fa" x="1400" y="700" width="400" height="300" opacity="0.3"/></svg>');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        z-index: 2;
+        animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+    }
+
+    .btn-custom {
+        background: var(--accent-color);
+        border: none;
+        padding: 12px 30px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        border-radius: 50px;
+    }
+
+    .btn-custom:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+    }
+
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 20px auto;
+    }
+
+    .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .portfolio-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .portfolio-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(44,62,80,0.9), rgba(231,76,60,0.9));
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+    }
+
+    .overlay-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .overlay-subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+
+    .about-section {
+        background: var(--secondary-color);
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-light);
+    }
+
+    .stats {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .stat-item {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .stat-number {
+        font-size: 3rem;
+        font-weight: 300;
+        display: block;
+        color: var(--accent-color);
+    }
+
+    .stat-text {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-top: 0.5rem;
+    }
+
+    .contact-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .contact-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-info i {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        color: var(--accent-color);
+    }
+
+    .form-control {
+        border: none;
+        border-radius: 10px;
+        padding: 12px 20px;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        background: rgba(255,255,255,0.15);
+        border-color: var(--accent-color);
+        box-shadow: none;
+        color: white;
+    }
+
+    .form-control::placeholder {
+        color: rgba(255,255,255,0.7);
+    }
+
+    .footer {
+        background: var(--primary-color);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+    }
+
+    .social-links {
+        margin: 1rem 0;
+    }
+
+    .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+        color: var(--accent-color);
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+        }
+        
+        .section-padding {
+            padding: 50px 0;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-camera me-2"></i>Alex Chen
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+```
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="hero-content">
+                    <h1 class="hero-title">Capturing Life's <br><span style="color: var(--accent-color);">Beautiful Moments</span></h1>
+                    <p class="hero-subtitle">Professional photography that tells your unique story</p>
+                    <button class="btn btn-custom btn-lg">View My Work</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="section-padding">
+    <div class="container">
+        <h2 class="section-title">My Portfolio</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect fill='%23f8f9fa' width='400' height='300'/><circle fill='%23dee2e6' cx='200' cy='150' r='50'/><rect fill='%23adb5bd' x='50' y='200' width='100' height='80'/><polygon fill='%23ced4da' points='250,100 350,100 300,50'/></svg>" alt="Wedding Photography">
+                    <div class="portfolio-overlay">
+                        <h3 class="overlay-title">Wedding Photography</h3>
+                        <p class="overlay-subtitle">Romantic & Timeless</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect fill='%23e9ecef' width='400' height='300'/><rect fill='%236c757d' x='100' y='50' width='200' height='200'/><circle fill='%23495057' cx='200' cy='150' r='30'/></svg>" alt="Portrait Photography">
+                    <div class="portfolio-overlay">
+                        <h3 class="overlay-title">Portrait Photography</h3>
+                        <p class="overlay-subtitle">Authentic & Personal</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect fill='%23f1f3f4' width='400' height='300'/><polygon fill='%239aa0a6' points='0,300 400,300 200,50'/><rect fill='%235f6368' x='150' y='200' width='100' height='100'/></svg>" alt="Landscape Photography">
+                    <div class="portfolio-overlay">
+                        <h3 class="overlay-title">Landscape Photography</h3>
+                        <p class="overlay-subtitle">Nature's Beauty</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect fill='%23fff3e0' width='400' height='300'/><rect fill='%23ff9800' x='50' y='100' width='300' height='100'/><circle fill='%23f57c00' cx='200' cy='150' r='25'/></svg>" alt="Event Photography">
+                    <div class="portfolio-overlay">
+                        <h3 class="overlay-title">Event Photography</h3>
+                        <p class="overlay-subtitle">Memorable Celebrations</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect fill='%23fce4ec' width='400' height='300'/><circle fill='%23e91e63' cx='150' cy='120' r='40'/><circle fill='%23ad1457' cx='250' cy='180' r='35'/></svg>" alt="Fashion Photography">
+                    <div class="portfolio-overlay">
+                        <h3 class="overlay-title">Fashion Photography</h3>
+                        <p class="overlay-subtitle">Style & Elegance</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect fill='%23e8f5e8' width='400' height='300'/><rect fill='%234caf50' x='100' y='50' width='50' height='200'/><rect fill='%232e7d32' x='200' y='80' width='50' height='170'/><rect fill='%231b5e20' x='300' y='120' width='50' height='130'/></svg>" alt="Commercial Photography">
+                    <div class="portfolio-overlay">
+                        <h3 class="overlay-title">Commercial Photography</h3>
+                        <p class="overlay-subtitle">Professional & Creative</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <div class="stat-text">Happy Clients</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">1200+</span>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <div class="stat-text">Years Experience</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <div class="stat-text">Awards Won</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='400' viewBox='0 0 500 400'><rect fill='%23f8f9fa' width='500' height='400'/><circle fill='%236c757d' cx='250' cy='150' r='80'/><rect fill='%23adb5bd' x='200' y='220' width='100' height='120'/><rect fill='%23dee2e6' x='50' y='50' width='400' height='300' rx='20' fill='none' stroke='%23ced4da' stroke-width='3'/></svg>" alt="About Me" class="img-fluid rounded">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title text-start">About Me</h2>
+                <p class="about-text">Hello! I'm Alex Chen, a passionate photographer with over 8 years of experience capturing life's most precious moments. My journey began with a simple love for storytelling through images, and has evolved into a career dedicated to preserving memories that last a lifetime.</p>
+                <p class="about-text">I specialize in wedding, portrait, and event photography, but my true passion lies in connecting with people and understanding their unique stories. Every photo session is an opportunity to create something beautiful and meaningful.</p>
+                <p class="about-text">When I'm not behind the camera, you can find me exploring new locations, studying light and composition, or spending time with my family. I believe that great photography comes from genuine connections and authentic moments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section section-padding">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Let's Create Something Beautiful Together</h3>
+                <p>Ready to capture your special moments? I'd love to hear about your vision and discuss how we can bring it to life.</p>
+                
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong><br>
+                        +1 (555) 123-4567
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        hello@alexchenphotography.com
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Location</strong><br>
+                        San Francisco, CA
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-custom btn-lg">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p>&copy; 2025 Alex Chen Photography. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        }
+    });
+
+    // Form submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message! I\'ll get back to you soon.');
+        this.reset();
+    });
+
+    // Portfolio hover effects
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+```
+
+</body>
+</html>

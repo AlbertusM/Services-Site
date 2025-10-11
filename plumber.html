@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaFix Pro - Expert Plumbing Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --secondary-blue: #1e40af;
+            --accent-orange: #f97316;
+            --dark-gray: #1f2937;
+            --light-gray: #f8fafc;
+        }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-gray);
+    }
+
+    .hero-gradient {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-gradient::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+    }
+
+    .floating-element {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        border: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .service-card:hover::before {
+        transform: translateX(0);
+    }
+
+    .service-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-primary:hover::before {
+        left: 100%;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+    }
+
+    .btn-outline-light {
+        border: 2px solid rgba(255,255,255,0.3);
+        color: white;
+        border-radius: 50px;
+        padding: 12px 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .btn-outline-light:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: white;
+        transform: translateY(-2px);
+    }
+
+    .testimonial-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+        border: 1px solid rgba(37, 99, 235, 0.1);
+        position: relative;
+    }
+
+    .testimonial-card::before {
+        content: '"';
+        font-size: 6rem;
+        color: var(--primary-blue);
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        opacity: 0.1;
+        font-family: serif;
+    }
+
+    .stats-counter {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+    }
+
+    .navbar {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--primary-blue) !important;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        color: var(--dark-gray) !important;
+        position: relative;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background: var(--accent-orange);
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+        left: 0;
+    }
+
+    .emergency-badge {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    .contact-form {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .form-control {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    }
+
+    .section-title {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 3rem;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+        border-radius: 2px;
+    }
+
+    .footer {
+        background: var(--dark-gray);
+        color: white;
+    }
+
+    .social-link {
+        width: 50px;
+        height: 50px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .social-link:hover {
+        background: var(--accent-orange);
+        color: white;
+        transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+        .hero-gradient {
+            min-height: 90vh;
+        }
+        
+        .stats-counter {
+            font-size: 2rem;
+        }
+        
+        .contact-form {
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-wrench me-2"></i>AquaFix Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <span class="emergency-badge">
+                            <i class="fas fa-phone me-1"></i>24/7 Emergency
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-gradient">
+    <div class="container h-100 d-flex align-items-center">
+        <div class="row w-100">
+            <div class="col-lg-6">
+                <div class="text-white" style="position: relative; z-index: 2;">
+                    <h1 class="display-4 fw-bold mb-4 floating-element" style="margin-top:95px;">
+                        Professional Plumbing Services You Can Trust
+                    </h1>
+                    <p class="lead mb-4 opacity-90">
+                        Fast, reliable, and affordable plumbing solutions for your home and business. Available 24/7 for emergencies.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mb-5">
+                        <button class="btn btn-primary btn-lg">
+                            <i class="fas fa-phone me-2"></i>Call Now: (555) 123-4567
+                        </button>
+                        <button class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calendar me-2"></i>Schedule Service
+                        </button>
+                    </div>
+                    <div class="d-flex flex-wrap gap-4 text-sm opacity-90">
+                        <div><i class="fas fa-check me-2"></i>Licensed & Insured</div>
+                        <div><i class="fas fa-check me-2"></i>Free Estimates</div>
+                        <div><i class="fas fa-check me-2"></i>Satisfaction Guaranteed</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact-form floating-element" style="animation-delay: 0.5s;margin-top:90px;">
+                    <h3 class="mb-4 text-center">Get Your Free Quote</h3>
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Full Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" class="form-control" placeholder="Phone Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-control" required>
+                                <option value="">Select Service</option>
+                                <option>Emergency Repair</option>
+                                <option>Drain Cleaning</option>
+                                <option>Water Heater Service</option>
+                                <option>Pipe Installation</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <textarea class="form-control" rows="3" placeholder="Describe your plumbing issue..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 btn-lg">
+                            Get Free Quote
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5" style="background: var(--light-gray);">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title display-5 fw-bold">Our Services</h2>
+            <p class="lead text-muted">Comprehensive plumbing solutions for every need</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card text-center h-100">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Emergency Repairs</h4>
+                    <p class="text-muted mb-4">24/7 emergency plumbing services for urgent issues like burst pipes, major leaks, and blocked drains.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="fas fa-check text-success me-2"></i>Burst pipe repair</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Emergency leak fixes</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Urgent drain clearing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card text-center h-100">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Water Heater Service</h4>
+                    <p class="text-muted mb-4">Complete water heater installation, repair, and maintenance services for all types and brands.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="fas fa-check text-success me-2"></i>Tank & tankless systems</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Repair & replacement</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Regular maintenance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card text-center h-100">
+                    <div class="service-icon">
+                        <i class="fas fa-shower"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Drain Cleaning</h4>
+                    <p class="text-muted mb-4">Professional drain cleaning and unclogging services using advanced equipment and techniques.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="fas fa-check text-success me-2"></i>Kitchen & bathroom drains</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Main sewer lines</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Preventive maintenance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card text-center h-100">
+                    <div class="service-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Pipe Installation</h4>
+                    <p class="text-muted mb-4">Expert pipe installation and replacement services for residential and commercial properties.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="fas fa-check text-success me-2"></i>Copper & PVC pipes</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Repiping services</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Leak detection</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card text-center h-100">
+                    <div class="service-icon">
+                        <i class="fas fa-toilet"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Fixture Services</h4>
+                    <p class="text-muted mb-4">Installation, repair, and replacement of toilets, faucets, sinks, and other plumbing fixtures.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="fas fa-check text-success me-2"></i>Toilet repair & installation</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Faucet replacement</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Sink installations</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card text-center h-100">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4 class="fw-bold mb-3">Commercial Plumbing</h4>
+                    <p class="text-muted mb-4">Specialized commercial plumbing services for businesses, restaurants, and industrial facilities.</p>
+                    <ul class="list-unstyled text-start">
+                        <li><i class="fas fa-check text-success me-2"></i>Business maintenance</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Restaurant services</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Industrial systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-counter">15+</div>
+                <h5>Years Experience</h5>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-counter">5000+</div>
+                <h5>Happy Customers</h5>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-counter">24/7</div>
+                <h5>Emergency Service</h5>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-counter">100%</div>
+                <h5>Satisfaction Rate</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <h2 class="section-title display-5 fw-bold mb-4">Why Choose AquaFix Pro?</h2>
+                <p class="lead text-muted mb-4">With over 15 years of experience, we're the trusted plumbing experts in your area. Our licensed professionals deliver quality work at fair prices.</p>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-certificate fa-2x text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="fw-bold mb-1">Licensed & Insured</h6>
+                                <small class="text-muted">Fully certified professionals</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-clock fa-2x text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="fw-bold mb-1">24/7 Availability</h6>
+                                <small class="text-muted">Emergency service anytime</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-dollar-sign fa-2x text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="fw-bold mb-1">Fair Pricing</h6>
+                                <small class="text-muted">Transparent, upfront costs</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-shield-alt fa-2x text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="fw-bold mb-1">Guaranteed Work</h6>
+                                <small class="text-muted">100% satisfaction promise</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="testimonial-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="flex-shrink-0">
+                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                <i class="fas fa-user text-white fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="fw-bold mb-0">Sarah Johnson</h6>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mb-0">"AquaFix Pro saved the day when our water heater failed on Christmas morning! They arrived within an hour and had us back up and running quickly. Professional, courteous, and reasonably priced. Highly recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title display-5 fw-bold">Get In Touch</h2>
+            <p class="lead text-muted">Ready to solve your plumbing problems? Contact us today!</p>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="contact-form">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Service Needed</label>
+                                <select class="form-control" required>
+                                    <option value="">Select a service...</option>
+                                    <option>Emergency Repair</option>
+                                    <option>Water Heater Service</option>
+                                    <option>Drain Cleaning</option>
+                                    <option>Pipe Installation</option>
+                                    <option>Fixture Service</option>
+                                    <option>Commercial Plumbing</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="Tell us about your plumbing needs..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="h-100">
+                    <div class="mb-4">
+                        <h4 class="fw-bold mb-3">Contact Information</h4>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-phone fa-lg text-primary me-3"></i>
+                            <div>
+                                <strong>Phone:</strong><br>
+                                <a href="tel:5551234567" class="text-decoration-none">(555) 123-4567</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope fa-lg text-primary me-3"></i>
+                            <div>
+                                <strong>Email:</strong><br>
+                                <a href="mailto:info@aquafixpro.com" class="text-decoration-none">info@aquafixpro.com</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-map-marker-alt fa-lg text-primary me-3"></i>
+                            <div>
+                                <strong>Address:</strong><br>
+                                123 Main Street<br>
+                                Your City, ST 12345
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Business Hours</h5>
+                        <div class="small">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Monday - Friday:</span>
+                                <span>7:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Saturday:</span>
+                                <span>8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Sunday:</span>
+                                <span>9:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="d-flex justify-content-between text-primary fw-bold">
+                                <span>Emergency Service:</span>
+                                <span>24/7 Available</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-3">Follow Us</h5>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <h5 class="fw-bold mb-4">
+                    <i class="fas fa-wrench me-2"></i>AquaFix Pro
+                </h5>
+                <p class="mb-4">Your trusted local plumbing professionals. We're committed to providing fast, reliable, and affordable plumbing services to keep your home running smoothly.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="fw-bold mb-4">Services</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Emergency Repairs</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Water Heaters</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Drain Cleaning</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Pipe Installation</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Fixture Services</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <h6 class="fw-bold mb-4">Company</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Our Team</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Careers</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Reviews</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h6 class="fw-bold mb-4">Contact Info</h6>
+                <div class="mb-3">
+                    <i class="fas fa-phone me-2"></i>
+                    <a href="tel:5551234567" class="text-white text-decoration-none">(555) 123-4567</a>
+                </div>
+                <div class="mb-3">
+                    <i class="fas fa-envelope me-2"></i>
+                    <a href="mailto:info@aquafixpro.com" class="text-white text-decoration-none">info@aquafixpro.com</a>
+                </div>
+                <div class="mb-4">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    123 Main Street, Your City, ST 12345
+                </div>
+                <div class="emergency-badge d-inline-block">
+                    <i class="fas fa-clock me-2"></i>24/7 Emergency Service
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 border-secondary">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0 text-white-50">&copy; 2025 AquaFix Pro. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                <a href="#" class="text-white-50 text-decoration-none me-3">Terms of Service</a>
+                <a href="#" class="text-white-50 text-decoration-none">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="btn btn-primary position-fixed bottom-0 end-0 m-4 rounded-circle" style="width: 60px; height: 60px; display: none;" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        const backToTop = document.getElementById('backToTop');
+        
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            backToTop.style.display = 'block';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = 'none';
+            backToTop.style.display = 'none';
+        }
+    });
+
+    // Back to top functionality
+    document.getElementById('backToTop').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Form submission handler
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation and submission simulation
+            const formData = new FormData(this);
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            // Show loading state
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+            submitButton.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+                this.reset();
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        });
+    });
+
+    // Animate counters when they come into view
+    const observerOptions = {
+        threshold: 0.7,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.innerText.replace(/\D/g, ''));
+                const increment = target / 30;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = counter.innerText.replace(/\d+/, target);
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = counter.innerText.replace(/\d+/, Math.floor(current));
+                    }
+                }, 50);
+
+                observer.unobserve(counter);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.stats-counter').forEach(counter => {
+        observer.observe(counter);
+    });
+
+    // Add entrance animations
+    const animateOnScroll = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    // Apply animations to service cards and other elements
+    document.querySelectorAll('.service-card, .testimonial-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        animateOnScroll.observe(el);
+    });
+</script>
+
+</body>
+</html>
