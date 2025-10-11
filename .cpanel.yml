@@ -4,5 +4,5 @@ deployment:
     - /bin/echo "Starting deployment..."
     - export DEPLOYPATH=/home/albertu2/public_html/
     - /bin/echo "Deploying files to $DEPLOYPATH"
-    - /bin/cp -R /home/bertie/repositories/Services-Site/* $DEPLOYPATH
+    - /bin/cp -R /home/albertu2/repositories/Services-Site/* $DEPLOYPATH
     - /bin/echo "Deployment complete!"
