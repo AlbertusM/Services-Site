@@ -1,5 +1,8 @@
 ---
 deployment:
   tasks:
+    - /bin/echo "Starting deployment..."
     - export DEPLOYPATH=/home/albertu2/public_html/
-    - /bin/rsync -av --delete --exclude='.git' --exclude='.cpanel.yml' $(pwd) $DEPLOYPATH
+    - /bin/echo "Deploying files to $DEPLOYPATH"
+    - /bin/cp -R /home/bertie/repositories/Services-Site/* $DEPLOYPATH
+    - /bin/echo "Deployment complete!"
